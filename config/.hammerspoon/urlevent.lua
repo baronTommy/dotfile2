@@ -1,0 +1,26 @@
+hs.urlevent.bind('move_focus', function(eventName, parameter)
+    HS_H.focus:moveWindow(parameter)
+  end)
+
+hs.urlevent.bind('move_window_position', function(eventName, parameter)
+    MY_HS_H.window:movePosition(parameter)
+  end)
+
+hs.urlevent.bind('move_window_position_to_other_display', function(eventName, parameter)
+    MY_HS_H.window:moveDisplay(parameter)
+  end)
+
+hs.urlevent.bind('move_desktop_together', function(eventName, parameter)
+    WINDOW_WATCHER:stop()
+    HS_H.drawing:windowGridLineDelete()
+    HS_H.desktop:moveDesktopTogether(parameter)
+    WINDOW_WATCHER:start()
+  end)
+
+hs.urlevent.bind('move_window_to_other_desktop', function(eventName, parameter)
+    WINDOW_WATCHER:stop()
+    HS_H.drawing:windowGridLineDelete()
+    HS_H.desktop:moveWindowToOtherDesktop(parameter)
+    HS_H.desktop:moveDesktopTogether(parameter)
+    WINDOW_WATCHER:start()
+  end)
